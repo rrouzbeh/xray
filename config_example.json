@@ -1,0 +1,45 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "inbounds": [
+    {
+      "port": 12346,
+      "listen": "127.0.0.1",
+      "protocol": "vless",
+      "settings": {
+        "clients": [
+          {
+            "id": "",
+            "level": 0,
+            "email": ""
+          }
+        ],
+        "decryption": "none"
+      },
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "alpn": ["http/1.1"],
+          "serverName": "login.arvanclouds.click",
+          "certificates": [
+            {
+              "certificateFile": "/path/to/fullchain.crt",
+              "keyFile": "/path/to/private.key"
+            }
+          ]
+        },
+        "wsSettings": {
+          "acceptProxyProtocol": true,
+          "path": "/vless"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
+}
