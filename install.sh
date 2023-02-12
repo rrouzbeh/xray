@@ -19,7 +19,7 @@ python3 cloudflare.py $auth_email $auth_key $domain $ip
 echo -ne '#############             (35%)\r'
 sudo apt install certbot nginx -y
 echo -ne '################          (45%)\r'
-sudp systemctl stop nginx
+sudo systemctl stop nginx
 sudo certbot certonly --standalone --non-interactive --agree-tos --email your-email@$domain -d $domain
 echo -ne '####################      (60%)\r'
 echo "Certificate generated for $domain"
