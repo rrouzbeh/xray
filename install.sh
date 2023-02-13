@@ -26,6 +26,8 @@ echo "Certificate generated for $domain"
 echo -ne '#######################   (80%)\r'
 mkdir /etc/v2ray/
 sudo ln -s /etc/letsencrypt/live/$domain/ /etc/letsencrypt/default
+sudo ln -s /etc/letsencrypt/live/$domain/fullchain.pem /etc/v2ray/fullchain.pem
+sudo ln -s /etc/letsencrypt/live/$domain/privkey.pem /etc/v2ray/privkey.pem
 cp nginx.conf /etc/nginx/sites-available/default
 sudo systemctl restart nginx
 python3 xray.py $domain
