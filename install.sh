@@ -9,7 +9,6 @@ ip=$(curl -s https://api.ipify.org)
 
 
 # sleep 10 seconds to wait for DNS propagation
-# animation: https://stackoverflow.com/a/1249834/104380
 echo -ne '###                       (10%)\r'
 sleep 10
 sudo apt-get update > /dev/null
