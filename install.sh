@@ -19,7 +19,7 @@ python3 cloudflare.py $auth_email $auth_key $domain $ip
 echo -ne '#############             (35%)\r'
 sudo apt install certbot -y > /dev/null
 echo -ne '################          (45%)\r'
-sudo certbot certonly --standalone --non-interactive --agree-tos --email your-email@$domain -d $domain
+sudo certbot certonly --standalone --non-interactive --agree-tos --email your-email@$domain -d *.$domain
 echo -ne '####################      (60%)\r'
 echo "Certificate generated for $domain"
 echo -ne '#######################   (80%)\r'
