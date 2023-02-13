@@ -74,7 +74,7 @@ if __name__ == '__main__':
     ip = requests.get('https://api.ipify.org').text
     with open('uuid.txt', 'r') as f:
         user_id = f.read()
-    for i in range(9):
+    for i in range(5):
         address = cf_ips[i].strip()
         record = generate_random_domain(subdomains, top_domains)
         domain = f'{record}.{conf["domain"]}'
@@ -88,7 +88,8 @@ if __name__ == '__main__':
             "tls_server_name": domain,
             "ws_path": "/"
         }
-
+        if i >= 4:
+            server_config["address"] = ip
         qr_code, vless_link = gen_vless_qr_code(server_config)
         print(qr_code)
         print(vless_link)
