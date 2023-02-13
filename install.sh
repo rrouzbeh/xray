@@ -25,7 +25,7 @@ echo "dns_cloudflare_api_key" = $auth_key >> /root/.secrets/cloudflare.ini
 sudo chmod 0700 /root/.secrets/
 sudo chmod 0400 /root/.secrets/cloudflare.ini
 echo -ne '################          (45%)\r'
-sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.ini  --non-interactive --agree-tos --email your-email@$domain -d $domain,*.$domain --preferred-challenges dns-0
+sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.ini  --non-interactive --agree-tos --email your-email@$domain -d $domain,*.$domain
 echo -ne '####################      (60%)\r'
 echo "Certificate generated for $domain"
 echo -ne '#######################   (80%)\r'
