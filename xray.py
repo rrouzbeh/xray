@@ -13,8 +13,6 @@ def gen_config(config, uuid, domain):
     cert_path = f'/etc/letsencrypt/live/{domain}/'
     config = open_example_config('config_example.json')
     config['inbounds'][0]['settings']['clients'][0]['id'] = uuid
-    config['inbounds'][0]['streamSettings']['tlsSettings']['certificates'][0]['certificateFile'] = cert_path + 'fullchain.pem'
-    config['inbounds'][0]['streamSettings']['tlsSettings']['certificates'][0]['keyFile'] = cert_path + 'privkey.pem'
     config['inbounds'][0]['streamSettings']['tlsSettings']['serverName'] = domain
     return config
 

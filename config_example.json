@@ -22,11 +22,11 @@
         "security": "tls",
         "tlsSettings": {
           "alpn": ["http/1.1"],
-          "serverName": "login.arvanclouds.click",
+          "serverName": "serverName",
           "certificates": [
             {
-              "certificateFile": "/path/to/fullchain.crt",
-              "keyFile": "/path/to/private.key"
+              "certificateFile": "/etc/v2ray/fullchain.pem",
+              "keyFile": "/etc/v2ray/privkey.pem"
             }
           ]
         },
