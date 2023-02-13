@@ -25,6 +25,7 @@ echo -ne '####################      (60%)\r'
 echo "Certificate generated for $domain"
 echo -ne '#######################   (80%)\r'
 mkdir /etc/v2ray/
+chown -R nobody:nogroup /etc/letsencrypt/live/$domain/
 sudo ln -s /etc/letsencrypt/live/$domain/ /etc/letsencrypt/default
 sudo ln -s /etc/letsencrypt/live/$domain/fullchain.pem /etc/v2ray/fullchain.pem
 sudo ln -s /etc/letsencrypt/live/$domain/privkey.pem /etc/v2ray/privkey.pem
