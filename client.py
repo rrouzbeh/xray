@@ -78,8 +78,6 @@ if __name__ == '__main__':
         address = cf_ips[i].strip()
         record = generate_random_domain(subdomains, top_domains)
         domain = f'{record}.{conf["domain"]}'
-        cloudflare_dns_record_create(
-            conf['auth_email'], conf['auth_key'], conf['zone_id'], record, ip)
         server_config = {
             "address": address,
             "port": 443,
@@ -88,7 +86,10 @@ if __name__ == '__main__':
             "tls_server_name": domain,
             "ws_path": "/"
         }
-        if i >= 4:
+        if i < 4:
+            cloudflare_dns_record_create(
+                conf['auth_email'], conf['auth_key'], conf['zone_id'], record, ip)
+        else:
             server_config["address"] = ip
         qr_code, vless_link = gen_vless_qr_code(server_config)
         print(qr_code)
