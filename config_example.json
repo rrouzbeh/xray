@@ -4,8 +4,8 @@
   },
   "inbounds": [
     {
-      "port": 12346,
-      "listen": "127.0.0.1",
+      "port": 443,
+      "listen": "0.0.0.0",
       "protocol": "vless",
       "settings": {
         "clients": [
@@ -31,8 +31,7 @@
           ]
         },
         "wsSettings": {
-          "acceptProxyProtocol": true,
-          "path": "/vless"
+          "path": "/"
         }
       }
     }
