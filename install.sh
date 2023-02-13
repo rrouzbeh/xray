@@ -12,14 +12,20 @@ ip=$(curl -s https://api.ipify.org)
 # animation: https://stackoverflow.com/a/1249834/104380
 echo -ne '###                       (10%)\r'
 sleep 10
-sudo apt update > /dev/null
+sudo apt-get update > /dev/null
 bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release.sh)" @ install > /dev/null
 echo -ne '#########                 (30%)\r'
 python3 cloudflare.py $auth_email $auth_key $domain $ip
 echo -ne '#############             (35%)\r'
-sudo apt install certbot -y > /dev/null
+sudo apt-get install certbot python3-certbot-dns-cloudflare -y > /dev/null
+mkdir /root/.secrets/
+touch /root/.secrets/cloudflare.ini
+echo "dns_cloudflare_email = $auth_email" >> /root/.secrets/cloudflare.ini
+echo "dns_cloudflare_api_key" = $auth_key >> /root/.secrets/cloudflare.ini
+sudo chmod 0700 /root/.secrets/
+sudo chmod 0400 /root/.secrets/cloudflare.ini
 echo -ne '################          (45%)\r'
-sudo certbot certonly --standalone --non-interactive --agree-tos --email your-email@$domain -d *.$domain
+sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials /root/.secrets/cloudflare.ini  --non-interactive --agree-tos --email your-email@$domain -d $domain,*.$domain --preferred-challenges dns-0
 echo -ne '####################      (60%)\r'
 echo "Certificate generated for $domain"
 echo -ne '#######################   (80%)\r'
