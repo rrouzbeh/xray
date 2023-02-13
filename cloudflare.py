@@ -122,6 +122,7 @@ if __name__ == "__main__":
 
     # Create a zone
     zone_id = create_cloudflare_zone(auth_email, auth_key, domain)
+    time.sleep(30)
     if zone_id is None:
         print("Error creating zone")
         sys.exit(1)
