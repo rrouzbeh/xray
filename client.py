@@ -70,6 +70,7 @@ if __name__ == '__main__':
     with open('cloudflare.conf', 'r') as f:
         conf = json.load(f)
     cf_ips = file_to_list('cf_ips.txt')
+    cf_ips.sort(key=lambda x: int(x.split()[1]))
     # get server external IP
     ip = requests.get('https://api.ipify.org').text
     with open('uuid.txt', 'r') as f:
