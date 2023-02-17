@@ -71,13 +71,13 @@ if __name__ == '__main__':
         conf = json.load(f)
     cf_ips = file_to_list('cf_ips.txt')
     # sort cf_ips by second column and add it to a new list
-    cf_ips = sorted(cf_ips, key=lambda x: int(x.strip().split()[1]))
+    cf_ips = sorted(cf_ips, key=lambda x: int(x.strip().split(",")[1]))
     # get server external IP
     ip = requests.get('https://api.ipify.org').text
     with open('uuid.txt', 'r') as f:
         user_id = f.read()
     for i in range(5):
-        address = cf_ips[i].strip().split()[0]
+        address = cf_ips[i].strip().split(",")[0]
         record = generate_random_domain(subdomains, top_domains)
         domain = f'{record}.{conf["domain"]}'
         server_config = {
