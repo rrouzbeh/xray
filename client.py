@@ -25,7 +25,7 @@ def file_to_list(file_path):
 
 def gen_vless_qr_code(server_config):
     # Generate vless:// link
-    vless_link = f"vless://{server_config['user_id']}@{server_config['address']}:{server_config['port']}?type=ws&security=tls&path=%2F&host={server_config['tls_server_name']}&sni={server_config['tls_server_name']}#{server_config['tls_server_name']}"
+    vless_link = f"vless://{server_config['user_id']}@{server_config['address']}:{server_config['port']}?type=ws&security=tls&path=%2F&host={server_config['tls_server_name']}&sni={server_config['tls_server_name']}&alpn=h2,http/1.1&fp=chrome#{server_config['tls_server_name']}"
     # Generate QR code
     qr_code = base64.b64encode(vless_link.encode('utf-8')).decode('utf-8')
     return qr_code, vless_link
