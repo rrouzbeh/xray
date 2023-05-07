@@ -1,0 +1,27 @@
+{
+  "log": {
+    "loglevel": "debug"
+  },
+  "inbounds": [
+    {
+      "listen": "127.0.0.1",
+      "port": "1083",
+      "protocol": "socks",
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "ip": "127.0.0.1"
+      }
+    },
+    {
+      "listen": "127.0.0.1",
+      "port": "1081",
+      "protocol": "http"
+    }
+  ],
+  "outbounds": [
+    {
+      "protocol": "freedom"
+    }
+  ]
+}
