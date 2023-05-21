@@ -4,17 +4,17 @@
   },
   "inbounds": [
     {
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "port": "1083",
       "protocol": "socks",
       "settings": {
         "auth": "noauth",
         "udp": true,
-        "ip": "127.0.0.1"
+        "ip": "0.0.0.0"
       }
     },
     {
-      "listen": "127.0.0.1",
+      "listen": "0.0.0.0",
       "port": "1081",
       "protocol": "http"
     }
